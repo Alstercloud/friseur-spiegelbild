@@ -1,0 +1,7 @@
+# pnpm v10 liest Einstellungen (u.a. Build-Script-Freigaben) hier,
+# nicht mehr aus dem "pnpm"-Feld der package.json.
+# Erlaubt den nativen Abhaengigkeiten, ihre Build-Skripte auszufuehren
+# (sonst: ERR_PNPM_IGNORED_BUILDS beim Hostinger-Build).
+onlyBuiltDependencies:
+  - esbuild
+  - '@tailwindcss/oxide'
