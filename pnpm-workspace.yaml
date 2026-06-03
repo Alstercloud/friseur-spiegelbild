@@ -1,7 +1,7 @@
-# pnpm v10 liest Einstellungen (u.a. Build-Script-Freigaben) hier,
-# nicht mehr aus dem "pnpm"-Feld der package.json.
-# Erlaubt den nativen Abhaengigkeiten, ihre Build-Skripte auszufuehren
-# (sonst: ERR_PNPM_IGNORED_BUILDS beim Hostinger-Build).
+# pnpm v10 liest Einstellungen hier, nicht mehr aus dem "pnpm"-Feld der package.json.
+# esbuild wird durch esbuild-wasm ersetzt (reines JS, KEIN Build-Skript) -> vermeidet
+# ERR_PNPM_IGNORED_BUILDS in der Hostinger-Build-Sandbox.
+overrides:
+  esbuild: npm:esbuild-wasm@^0.28.0
 onlyBuiltDependencies:
-  - esbuild
   - '@tailwindcss/oxide'
