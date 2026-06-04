@@ -77,7 +77,7 @@ export function GallerySlider({ images, interval = 4000, className = "" }: Galle
             className={`absolute inset-0 h-full w-full cursor-zoom-in object-cover transition-opacity duration-700 ease-in-out ${
               i === current ? "opacity-100" : "pointer-events-none opacity-0"
             }`}
-            loading="lazy"
+            loading="eager"
           />
         ))}
 
