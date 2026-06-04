@@ -15,24 +15,21 @@ export default defineConfig({
   build: {
     outDir: path.resolve(__dirname, "dist/public"),
     emptyOutDir: true,
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-        pure_funcs: ['console.log', 'console.info'],
-      },
-    },
+    minify: "esbuild",
     rollupOptions: {
       output: {
         manualChunks: {
-          'react-vendor': ['react', 'react-dom'],
-          'router': ['react-router-dom'],
+          "react-vendor": ["react", "react-dom"],
+          "router": ["react-router-dom"],
         },
       },
     },
     cssCodeSplit: true,
     chunkSizeWarningLimit: 600,
+  },
+  esbuild: {
+    drop: ["debugger"],
+    pure: ["console.log", "console.info"],
   },
   server: {
     port: 3000,
