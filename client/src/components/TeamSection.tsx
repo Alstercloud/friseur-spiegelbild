@@ -93,7 +93,7 @@ export function TeamSection() {
           {/* unsichtbarer Platzhalter, damit beide Überschrift-Blöcke gleich hoch sind und die Kacheln fluchten */}
           <p className="text-lg text-muted-foreground invisible" aria-hidden="true">Leidenschaft trifft Expertise</p>
         </div>
-        <Card className="border-border overflow-hidden relative h-[420px] lg:h-auto lg:flex-1 py-0 gap-0 lg:min-h-[420px]">
+        <Card className="border-border overflow-hidden relative flex-1 py-0 gap-0 min-h-[420px]">
           <GallerySlider images={galleryImages} />
         </Card>
       </div>
