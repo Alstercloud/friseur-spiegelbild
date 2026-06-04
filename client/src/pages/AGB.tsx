@@ -33,7 +33,7 @@ export default function AGB() {
               Friseur Spiegelbild arbeitet hauptsächlich nach Terminvereinbarung. Den Kunden werden nach der Angabe der vom Kunden gewünschten Dienstleistungen Termine angeboten. Nach Annahme des Termins durch den Kunden wird dieser dann fest mit Datum, Uhrzeit und den gewünschten Dienstleistungen reserviert.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Dies kann persönlich, telefonisch (über: +49 172 7556153) oder über ein entsprechendes Buchungstool auf der Homepage www.friseursalon-osnabrueck.de geschehen. Sobald der Termin reserviert ist, entsteht zwischen dem Kunden und Friseur Spiegelbild ein Dienstleistungsvertrag.
+              Dies kann persönlich, telefonisch (über: +49 172 7556153) oder über ein entsprechendes Buchungstool auf der Homepage friseur-lotte.de geschehen. Sobald der Termin reserviert ist, entsteht zwischen dem Kunden und Friseur Spiegelbild ein Dienstleistungsvertrag.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Bei bestimmten Terminen (z.B. Hochzeit / Haarverdichtung / Haarverlängerung) wird vom Kunden eine Vorab-Bezahlung verlangt. Dies wird dem Kunden bei Terminabsprache mitgeteilt. Diese Termine sind bis zur Bezahlung nur optioniert und können bis zum kompletten Geldeingang vom Friseur Spiegelbild abgesagt und storniert werden.
@@ -46,7 +46,7 @@ export default function AGB() {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold text-foreground mb-4">4. PREISE UND ZAHLUNG</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Die Preise für Dienstleistungen sind inklusive der jeweiligen gesetzlichen Mehrwertsteuer. Preise vom Salon Spiegelbild können jederzeit öffentlich im Salon oder unter www.friseursalon-osnabrueck.de eingesehen werden. Für Dienstleistungen, die nicht in der Preisliste beschrieben sind, erteilt Friseur Spiegelbild gerne im Voraus Auskunft über den geplanten Preis.
+              Die Preise für Dienstleistungen sind inklusive der jeweiligen gesetzlichen Mehrwertsteuer. Preise vom Salon Spiegelbild können jederzeit öffentlich im Salon oder unter friseur-lotte.de eingesehen werden. Für Dienstleistungen, die nicht in der Preisliste beschrieben sind, erteilt Friseur Spiegelbild gerne im Voraus Auskunft über den geplanten Preis.
             </p>
             <p className="text-muted-foreground leading-relaxed">
               Die angegebenen Preise sind Mindestpreise und können sich durch Mehraufwand (z.B. langes oder besonders dickes Haar uvm.) oder spontanes Hinzubuchen von weiteren Dienstleistungen erhöhen. Die Rechnungsbeträge sind, sofern nicht vorab bezahlt, sofort nach Leistungserfüllung fällig und sind ausschließlich in Bar per EC-Cash oder mit Gutschein zu bezahlen.
