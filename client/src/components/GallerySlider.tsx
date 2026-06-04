@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 export interface GalleryImage {
@@ -17,6 +17,7 @@ interface GallerySliderProps {
  * Vollflächiger Bild-Slider, der seinen Container komplett ausfüllt (kein Padding).
  * Der Container MUSS position:relative und eine Höhe haben (z. B. min-h-[...]).
  * - läuft automatisch durch
+ * - Wischen (Touch) blättert vor/zurück
  * - Klick auf ein Bild öffnet eine Vollbild-Lightbox mit Weiter/Zurück-Pfeilen
  * - Tastatur: Esc schließt, Pfeil links/rechts blättert
  */
@@ -63,6 +64,41 @@ export function GallerySlider({ images, interval = 4000, className = "" }: Galle
     };
   }, [lightboxOpen, next, prev]);
 
+  // Touch-/Wisch-Navigation. swiped verhindert, dass ein Wisch die Lightbox öffnet.
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
+  const swiped = useRef(false);
+  const SWIPE_THRESHOLD = 40; // px
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    if (e.touches.length !== 1) return;
+    touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    swiped.current = false;
+  };
+
+  const onTouchEnd = (e: React.TouchEvent) => {
+    const start = touchStart.current;
+    touchStart.current = null;
+    if (!start) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - start.x;
+    const dy = t.clientY - start.y;
+    // nur als Wisch werten, wenn horizontal genug und überwiegend horizontal
+    if (Math.abs(dx) > SWIPE_THRESHOLD && Math.abs(dx) > Math.abs(dy)) {
+      swiped.current = true;
+      if (dx < 0) next();
+      else prev();
+    }
+  };
+
+  const onImageClick = () => {
+    // Wisch nicht als Klick (Lightbox) interpretieren
+    if (swiped.current) {
+      swiped.current = false;
+      return;
+    }
+    setLightboxOpen(true);
+  };
+
   if (count === 0) return null;
 
   return (
@@ -70,13 +106,17 @@ export function GallerySlider({ images, interval = 4000, className = "" }: Galle
       {/* Inline-Slider – füllt den (relativen) Container komplett.
           absolute inset-0 statt h-full, weil h-full bei nur per min-height
           gesetzter Containerhöhe (mobil) auf 0px kollabiert. */}
-      <div className={`group absolute inset-0 overflow-hidden ${className}`}>
+      <div
+        className={`group absolute inset-0 overflow-hidden ${className}`}
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
+      >
         {images.map((img, i) => (
           <img
             key={img.src}
             src={img.src}
             alt={img.alt}
-            onClick={() => setLightboxOpen(true)}
+            onClick={onImageClick}
             className={`absolute inset-0 h-full w-full cursor-zoom-in object-cover transition-opacity duration-700 ease-in-out ${
               i === current ? "opacity-100" : "pointer-events-none opacity-0"
             }`}
