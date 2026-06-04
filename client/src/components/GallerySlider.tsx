@@ -15,6 +15,7 @@ interface GallerySliderProps {
 
 /**
  * Vollflächiger Bild-Slider, der seinen Container komplett ausfüllt (kein Padding).
+ * Der Container MUSS position:relative und eine Höhe haben (z. B. min-h-[...]).
  * - läuft automatisch durch
  * - Klick auf ein Bild öffnet eine Vollbild-Lightbox mit Weiter/Zurück-Pfeilen
  * - Tastatur: Esc schließt, Pfeil links/rechts blättert
@@ -66,8 +67,10 @@ export function GallerySlider({ images, interval = 4000, className = "" }: Galle
 
   return (
     <>
-      {/* Inline-Slider – füllt den Container komplett */}
-      <div className={`group relative h-full w-full overflow-hidden ${className}`}>
+      {/* Inline-Slider – füllt den (relativen) Container komplett.
+          absolute inset-0 statt h-full, weil h-full bei nur per min-height
+          gesetzter Containerhöhe (mobil) auf 0px kollabiert. */}
+      <div className={`group absolute inset-0 overflow-hidden ${className}`}>
         {images.map((img, i) => (
           <img
             key={img.src}
